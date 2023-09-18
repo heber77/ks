@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pergunta</title>
+    <style>
+        /* Estilo para o modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white; /* Define a cor do texto como branco */
+            font-family: Arial, sans-serif; /* Define a fonte */
+        }
+        
+        /* Estilo para a caixa de texto do modal */
+        .modal-content {
+            background-color: #000; /* Define o fundo da caixa de texto como preto */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Estilo para centralizar os botões */
+        button {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 15px; /* Adiciona um espaço entre os botões */
+            padding: 15px 25px; /* Ajusta o tamanho dos botões */
+            font-size: 24px; /* Ajusta o tamanho da fonte dos botões */
+        }
+
+        h1 {
+            text-align: center; /* Centraliza o texto */
+            color: white; /* Define a cor do texto como branco */
+            font-size: 30px; /* Aumenta o tamanho da fonte para dispositivos móveis */
+        }
+
+        /* Estilo para o fundo da página */
+        body {
+            background-color: black; /* Define o fundo da página como preto */
+            margin: 0; /* Remove margens padrão do body */
+            padding: 0; /* Remove padding padrão do body */
+        }
+
+        /* Consulta de mídia para telas menores */
+        @media screen and (max-width: 600px) {
+            button {
+                font-size: 20px; /* Aumenta o tamanho da fonte dos botões para telas menores */
+            }
+
+            h1 {
+                font-size: 18px; /* Aumenta o tamanho da fonte do título para telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Vamos na colônia de férias????? (sábado 23/09)</h1>
+    <button id="botaoSim" onclick="responder('sim')">SIIM</button>
+    <button id="botaoNao" onclick="responder('nao')">Não</button>
+
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <span id="modalText">Te espero lá no sábado</span>
+            <button onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function responder(escolha) {
+            if (escolha === 'sim') {
+                exibirModal();
+            } else if (escolha === 'nao') {
+                document.getElementById('botaoNao').style.position = 'absolute';
+                document.getElementById('botaoNao').style.left = Math.random() * 80 + 'vw';
+                document.getElementById('botaoNao').style.top = Math.random() * 80 + 'vh';
+            }
+            document.getElementById('botaoSim').disabled = false;
+            document.getElementById('botaoNao').disabled = false;
+        }
+
+        function exibirModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+        }
+
+        function fecharModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
